@@ -389,6 +389,10 @@ require('lazy').setup({
     end,
   },
   {
+    'tpope/vim-commentary',
+    event = 'VeryLazy',
+  },
+  {
     'yetone/avante.nvim',
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     -- ⚠️ must add this setting! ! !
@@ -851,6 +855,16 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
+      }
+    end,
+  },
+  {
+    'rmagatti/goto-preview',
+    dependencies = { 'rmagatti/logger.nvim' },
+    event = 'BufEnter',
+    config = function() -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+      require('goto-preview').setup {
+        default_mappings = true,
       }
     end,
   },
